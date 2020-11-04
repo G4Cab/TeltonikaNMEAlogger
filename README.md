@@ -8,3 +8,7 @@ And put this line at the end of your /etc/rc.local
 /root/phonetracker.sh &
 
 so it will run on every bootup automatically
+
+###############################
+Tested on following devices:
+Teltonika RUT850 (Firmware RUT850_R_00.01.04)
