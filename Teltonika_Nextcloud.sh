@@ -15,7 +15,7 @@ SESSION="132456789abcdefghijkl"
 NAME="deviceName"
 
 # Log file name and location
-FILE="/root/offline.log"
+OFFLINELOGFILE="/tmp/offline.log"
 
 # Put your update delay in here in seconds
 DELAY=5
@@ -41,16 +41,16 @@ while :
                         if [ $ip_full != "" ] #If Valid IP
                         then
                                 curl ${GPSResults// /} # Send data to nextcloud
-                                if [ -f $FILE ] #If File exists
+                                if [ -f $OFFLINELOGFILE ] #If File exists
                                 then
                                         while IFS= read -r line
                                         do
                                                 curl $line
-                                        done <"$FILE"
-                                        rm $FILE #Remove file
+                                        done <"$OFFLINELOGFILE"
+                                        rm $OFFLINELOGFILE #Remove file
                                 fi
                         else
-                                echo ${GPSResults// /} >> $FILE  #log GPS data in file
+                                echo ${GPSResults// /} >> $OFFLINELOGFILE  #log GPS data in file
                         fi
                 fi
     fi
