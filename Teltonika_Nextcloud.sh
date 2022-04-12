@@ -40,12 +40,12 @@ while :
                         ip_full=$(echo $DataCheck | sed -n 's/^\(\(\([1-9][0-9]\?\|[1][0-9]\{0,2\}\|[2][0-4][0-9]\|[2][5][0-4]\)\.\)\{3\}\([1-9][0-9]\?\|[1][0-9]\{0,2\}\|[2][0-4][0-9]\|[2][5][0-4]\)\)$/\1/p') #Validate IP
                         if [ $ip_full != "" ] #If Valid IP
                         then
-                                curl ${GPSResults// /} # Send data to nextcloud
+                                curl -k ${GPSResults// /} # Send data to nextcloud
                                 if [ -f $OFFLINELOGFILE ] #If File exists
                                 then
                                         while IFS= read -r line
                                         do
-                                                curl $line
+                                                curl -k $line
                                         done <"$OFFLINELOGFILE"
                                         rm $OFFLINELOGFILE #Remove file
                                 fi
